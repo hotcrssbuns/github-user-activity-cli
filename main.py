@@ -35,15 +35,17 @@ def main():
         else:
             events.update({f"{event_type}_{repo_name}": 1})
 
-        # if event_type == "PublicEvent":
-        # print(f"- Changed repository from private to public {repo_name}")
-        # if event_type == "WatchEvent":
-        # print(f"- Starred repository {repo_name}")
-        # if event_type == "PushEvent":
-        # print(f"- Pushed commit to {repo_name}")
-
-    for key in events.keys():
-        print(key)
+    for key, value in events.items():
+        event_type, repo_name = key.split("_")
+        if event_type == "PublicEvent":
+            print(f"- Changed repository from private to public {repo_name}")
+        if event_type == "WatchEvent":
+            print(f"- Starred repository {repo_name}")
+        if event_type == "PushEvent":
+            if value > 1:
+                print(f"- Pushed commit {value} times to {repo_name}")
+            else:
+                print(f"- Pushed commit 1 time to {repo_name}")
 
 
 main()
