@@ -29,7 +29,7 @@ def main():
         events = {}
         formatted_json = fetch_json(link)
         if is_json_empty(formatted_json):
-            print("Error: Not legitimate account. Try another")
+            print("Error: Not a legitimate account. Try another")
         else:
             break
     clear()
@@ -58,6 +58,34 @@ def main():
                 print(f"- Pushed commit {value} times to {repo_name}")
             else:
                 print(f"- Pushed commit 1 time to {repo_name}")
+        if event_type == "CommitCommentEvent":
+            print(f"- Created commit comment on {repo_name}")
+        if event_type == "CreateEvent":
+            print(f"- Created git branch for {repo_name}")
+        if event_type == "DeleteEvent":
+            print(f"- Deleted git branch for {repo_name}")
+        if event_type == "ForkEvent":
+            print(f"- Forked {repo_name}")
+        if event_type == "GollumEvent":
+            print(f"- Created/Updated wiki page for {repo_name}")
+        if event_type == "IssueCommentEvent":
+            print(f"- Created Pull Request comment for {repo_name}")
+        if event_type == "IssuesEvent":
+            print(f"- Finish this later")
+        if event_type == "MemberEvent":
+            print(f"- Finish this later")
+        if event_type == "PullRequestEvent":
+            print(f"- Finish this later")
+        if event_type == "PullRequestReviewEvent":
+            print(f"- Finish this later")
+        if event_type == "PullRequestReviewCommentEvent":
+            print(f"- Finish this later")
+        if event_type == "PullRequestReviewThreadEvent":
+            print(f"- Finish this later")
+        if event_type == "ReleaseEvent":
+            print(f"- Finish this later")
+        if event_type == "SponsorshipEvent":
+            print(f"- Finish this later")
 
 
 main()
