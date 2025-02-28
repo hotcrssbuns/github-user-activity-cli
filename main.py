@@ -40,6 +40,8 @@ def main():
         for value in formatted_json:
             event_type = value["type"]
             repo_name = value["repo"]["name"]
+            action = value.get("payload", {}).get("action")
+
             if f"{event_type}_{repo_name}" in events.keys():
                 events[f"{event_type}_{repo_name}"] += 1
             else:
@@ -71,21 +73,21 @@ def main():
         if event_type == "IssueCommentEvent":
             print(f"- Created Pull Request comment for {repo_name}")
         if event_type == "IssuesEvent":
-            print(f"- Finish this later")
+            print(f"- {action} issue for {repo_name}")
         if event_type == "MemberEvent":
-            print(f"- Finish this later")
+            print(f"- {action} user for {repo_name}")
         if event_type == "PullRequestEvent":
-            print(f"- Finish this later")
+            print(f"- {action} Pull Request for {repo_name}")
         if event_type == "PullRequestReviewEvent":
-            print(f"- Finish this later")
+            print(f"- {action} Pull Request Review for {repo_name}")
         if event_type == "PullRequestReviewCommentEvent":
-            print(f"- Finish this later")
+            print(f"- {action} Pull Request Review Comment for {repo_name}")
         if event_type == "PullRequestReviewThreadEvent":
-            print(f"- Finish this later")
+            print(f"- {action} Comment Thread for {repo_name}")
         if event_type == "ReleaseEvent":
-            print(f"- Finish this later")
+            print(f"- {action} release event for {repo_name}")
         if event_type == "SponsorshipEvent":
-            print(f"- Finish this later")
+            print(f"- {action} Sponsorship Listing for {repo_name}")
 
 
 main()
